@@ -1,0 +1,116 @@
+﻿@model RegistrationViewModel
+
+@{
+    Layout = "~/Views/Shared/signup.cshtml";
+    ViewBag.Title = "Register";
+}
+
+
+<!-- Logo & Information Panel-->
+<div class="col-lg-4">
+    <div class="info d-flex align-items-center">
+        <div class="content">
+            <div class="logo">
+                <h1>Dashboard</h1>
+            </div>
+            <p>All subscriptions in one pack.</p>
+        </div>
+    </div>
+</div>
+<!-- Form Panel    -->
+<div class="col-lg-8 bg-white">
+    <div class="align-items-center p-4" style="background: #2d3035">
+        <div class="content p-4">
+            <form class="text-left form-validate" asp-action="Register" asp-controller="Account" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-6 pr-4">
+                        <div class="form-group-material">
+                            <input id="register-username" asp-for="FirstName" data-msg="Please enter your username" class="input-material"><span class="text-danger" asp-validation-for="FirstName"></span>
+                            <label for="register-username" class="label-material" asp-for="FirstName"></label>
+                        </div>
+
+                        <div class="form-group-material">
+                            <input id="register-email" asp-for="PhoneNumber" data-msg="Please enter a valid email address" class="input-material"><span class="text-danger" asp-validation-for="PhoneNumber"></span>
+                            <label for="register-email" class="label-material" asp-for="PhoneNumber"></label>
+                        </div>
+
+                        <div class="form-group-material">
+                            <select asp-for="Gender" asp-items="Html.GetEnumSelectList<gender>()" class="input-material form-control"></select><span class="text-danger" asp-validation-for="Gender"></span>
+                            <label for="register-email" class="label-material" asp-for="Gender"></label>
+                        </div>                        
+                    </div>
+
+                    <div class="col-6 pr-4">
+                        <div class="form-group-material">
+                            <input id="register-email" asp-for="LastName" data-msg="Please enter a valid email address" class="input-material"><span class="text-danger" asp-validation-for="LastName"></span>
+                            <label for="register-email" class="label-material" asp-for="LastName"></label>
+                        </div>
+
+                        <div class="form-group-material">
+                            <input id="register-email" asp-for="Address" data-msg="Please enter a valid email address" class="input-material"><span class="text-danger" asp-validation-for="Address"></span>
+                            <label for="register-email" class="label-material" asp-for="Address"></label>
+                        </div>
+
+                        <div class="form-group-material">
+                            <select asp-for="State" asp-items="Html.GetEnumSelectList<state>()" class="input-material form-control"></select><span class="text-danger" asp-validation-for="State"></span>
+                            <label for="register-email" class="label-material" asp-for="State"></label>
+                        </div>
+
+                        <div class="form-group terms-conditions text-center">
+                            <div class="custom-file">
+                                <input asp-for="photo" class="form-control custom-file-input" />
+                                <label class="custom-file-label">Choose a passport file.....</label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <hr />
+                    <div class="col-6 pr-4">
+                        <p>Login info</p>
+                        <div class="form-group-material">
+                            <input id="register-email" asp-for="Email" data-msg="Please enter a valid email address" class="input-material"><span class="text-danger" asp-validation-for="Email"></span>
+                            <label for="register-email" class="label-material" asp-for="Email"></label>
+                        </div>
+
+                        <div class="form-group-material">
+                            <input id="register-password" asp-for="Password" data-msg="Please enter your password" class="input-material"><span class="text-danger" asp-validation-for="Password"></span>
+                            <label for="register-password" class="label-material" asp-for="Password"></label>
+                        </div>
+
+                        <div class="form-group-material">
+                            <input id="register-password" asp-for="ConfirmPassword" data-msg="Please enter your password" class="input-material"><span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+                            <label for="register-password" class="label-material" asp-for="ConfirmPassword"></label>
+                        </div>
+
+                        <div class="form-group terms-conditions text-left">
+                            <input id="register-agree" name="registerAgree" type="checkbox" required value="1" data-msg="Your agreement is required" class="checkbox-template">
+                            <label for="register-agree">I agree with the terms and policy</label>
+                        </div>
+                        <div class="form-group text-danger" asp-validation-summary="All"></div>
+                        <div class="form-group text-left">
+                            <input id="register" type="submit" value="Register" class="btn btn-primary">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+
+                    </div>
+                </div>
+            </form><small>Already have an account? </small><a asp-action="login" asp-controller="Account" class="signup">Login</a>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('.custom-file-input').on("change", function () {
+                var filename = $(this).val().split("\\").pop();
+                $(this).next('.custom-file-label').html(filename);
+            });
+        });
+    </script>
+}

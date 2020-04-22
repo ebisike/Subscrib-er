@@ -1,0 +1,13 @@
+C:\Users\Shopinverse.com\Documents\GitRepo\Subscrib-er\Subscrib-er.Services\bin\Debug\netcoreapp3.1\Subscrib-er.Services.deps.json
+C:\Users\Shopinverse.com\Documents\GitRepo\Subscrib-er\Subscrib-er.Services\bin\Debug\netcoreapp3.1\Subscrib-er.Services.dll
+C:\Users\Shopinverse.com\Documents\GitRepo\Subscrib-er\Subscrib-er.Services\bin\Debug\netcoreapp3.1\Subscrib-er.Services.pdb
+C:\Users\Shopinverse.com\Documents\GitRepo\Subscrib-er\Subscrib-er.Services\obj\Debug\netcoreapp3.1\Subscrib-er.Services.AssemblyInfoInputs.cache
+C:\Users\Shopinverse.com\Documents\GitRepo\Subscrib-er\Subscrib-er.Services\obj\Debug\netcoreapp3.1\Subscrib-er.Services.AssemblyInfo.cs
+C:\Users\Shopinverse.com\Documents\GitRepo\Subscrib-er\Subscrib-er.Services\obj\Debug\netcoreapp3.1\Subscrib-er.Services.dll
+C:\Users\Shopinverse.com\Documents\GitRepo\Subscrib-er\Subscrib-er.Services\obj\Debug\netcoreapp3.1\Subscrib-er.Services.pdb
+C:\Users\Shopinverse.com\Documents\GitRepo\Subscrib-er\Subscrib-er.Services\obj\Debug\netcoreapp3.1\Subscrib-er.Services.csprojAssemblyReference.cache
+C:\Users\Shopinverse.com\Documents\GitRepo\Subscrib-er\Subscrib-er.Services\bin\Debug\netcoreapp3.1\Subscrib-er.Data.dll
+C:\Users\Shopinverse.com\Documents\GitRepo\Subscrib-er\Subscrib-er.Services\bin\Debug\netcoreapp3.1\Subscrib-er.Entities.dll
+C:\Users\Shopinverse.com\Documents\GitRepo\Subscrib-er\Subscrib-er.Services\bin\Debug\netcoreapp3.1\Subscrib-er.Data.pdb
+C:\Users\Shopinverse.com\Documents\GitRepo\Subscrib-er\Subscrib-er.Services\bin\Debug\netcoreapp3.1\Subscrib-er.Entities.pdb
+C:\Users\Shopinverse.com\Documents\GitRepo\Subscrib-er\Subscrib-er.Services\obj\Debug\netcoreapp3.1\Subscrib-er.Services.csproj.CopyComplete

@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Subscrib_er.Entities.Package>
+
+@{
+    Layout = "~/Views/Shared/dashboard.cshtml";
+    ViewData["Title"] = "Index";
+    ViewBag.Title = "Index";
+}
+
+
+    <section class="no-padding-top no-padding-bottom">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>All Packages</h1>
+                    <p><a asp-action="create" asp-controller="Package" class="btn btn-primary btn-sm">create new</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 col-sm-6">
+                    <table class="table table-striped table-hover table-responsive-sm">
+                        <thead>
+                            <tr>
+                                <th>Package Name</th>
+                                <th>Dealer Name</th>
+                                <th>Description</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td><a asp-action="details" asp-controller="Package" asp-route-id="@item.Id">@item.PackageName</a></td>
+                                    <td>@item.DealerName</td>
+                                    <td>@item.Description</td>
+                                    <td>@item.Status</td>
+                                    <td>
+                                        @if (item.Status.ToString() == "Expired")
+                                        {
+                                            <a asp-action="Delete" asp-controller="Package" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                                        }
+                                        @if (item.Status.ToString() == "Inactive")
+                                        {
+                                            <a asp-action="Edit" asp-controller="Package" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Edit</a>
+                                            <a asp-action="pay" asp-controller="Payments" asp-route-id="@item.Id" class="btn btn-success btn-sm">Pay</a>
+                                            <a asp-action="Delete" asp-controller="Package" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>

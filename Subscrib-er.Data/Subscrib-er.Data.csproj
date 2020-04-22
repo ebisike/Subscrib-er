@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>Subscrib_er.Data</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200326174313_initial.cs" />
+    <Compile Remove="Migrations\20200326174313_initial.Designer.cs" />
+    <Compile Remove="Migrations\20200330083129_users.cs" />
+    <Compile Remove="Migrations\20200330083129_users.Designer.cs" />
+    <Compile Remove="Migrations\20200330215337_updatedentities.cs" />
+    <Compile Remove="Migrations\20200330215337_updatedentities.Designer.cs" />
+    <Compile Remove="Migrations\20200330215803_entities.cs" />
+    <Compile Remove="Migrations\20200330215803_entities.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Subscrib-er.Entities\Subscrib-er.Entities.csproj" />
+  </ItemGroup>
+
+</Project>

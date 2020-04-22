@@ -1,0 +1,61 @@
+﻿@model Subscrib_er.Web.ViewModel.Payments.PaymentViewModel
+
+@{
+    Layout = "~/Views/Shared/dashboard.cshtml";
+    ViewData["Title"] = "Pay";
+    ViewBag.Title = "Payment";
+}
+
+    <section class="no-padding-top no-padding-bottom">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Pay Now</h1>
+                    <p>All subscription packages in one super pack!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <form asp-action="Pay" asp-controller="Payments" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>                                                                      
+                        <input asp-for="packageID" class="form-control" type="hidden" />                        
+                        <input asp-for="userID" class="form-control" type="hidden"/>
+
+                        <div class="form-group">
+                            <label asp-for="StartDate" class="control-label"></label>
+                            <input asp-for="StartDate" class="form-control" />
+                            <span asp-validation-for="StartDate" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Cost" class="control-label"></label>
+                            <input asp-for="Cost" class="form-control" />
+                            <span asp-validation-for="Cost" class="text-danger"></span>
+                        </div>
+                        @*<div class="form-group">
+                            <label asp-for="EndDate" class="control-label"></label>
+                            <input asp-for="EndDate" class="form-control" />
+                            <span asp-validation-for="EndDate" class="text-danger"></span>
+                        </div>*@
+                        <div class="form-group">
+                            <label asp-for="style" class="control-label"></label>
+                            <select asp-for="style" asp-items="@Html.GetEnumSelectList<style>()" class="input-material form-group"></select>
+                            <span asp-validation-for="style" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Pay" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

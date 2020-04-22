@@ -1,0 +1,101 @@
+﻿@inject INotifications notify;
+
+@model PackageModel
+@{
+    Layout = "~/Views/Shared/dashboard.cshtml";
+    ViewBag.Title = "Details";
+    string daysleft = "undefined";
+    if (Model.payments.endDate != null)
+    {
+        daysleft = (Model.payments.endDate.Subtract(Model.payments.startDate)).TotalDays.ToString();
+    }
+    else
+    {
+        daysleft = "undefined";
+    }
+}
+
+<section class="no-padding-top no-padding-bottom d-block">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>@Model.package.PackageName Package</h1>
+                <p class="bg-secondary text-white p-2">@daysleft Left! || <span class="text-bold text-dark">@Model.package.Status</span></p>
+                <p>All subscription packages in one super pack!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="d-flex">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <!--Package-->
+                <h4>Dealer Name</h4>
+                <p class="text-primary">@Model.package.DealerName</p>
+
+                <h4>Description</h4>
+                <p class="text-warning">@Model.package.Description</p>
+
+                <h4>Start Date</h4>
+                <p class="text-warning">@Model.payments.startDate.ToLongDateString()</p>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <!--payment-->
+                <h4>Package Duration</h4>
+                <p class="text-warning">@Model.payments.PackageStyle</p>
+
+                <h4>Package Cost</h4>
+                <p class="text-warning"><span>&#8358</span>@Model.payments.amount</p>
+
+                <h4>End Date</h4>
+                <p class="text-warning">
+                    @if (Model.payments.endDate == null)
+                    {
+                        <span>Undefined!</span>
+                    }
+                    else
+                    {
+                        Model.payments.endDate.ToLongDateString();
+                    }
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <!--buttons-->
+                @if (Model.package.Status == packagestate.Inactive)
+                {
+                    <a asp-action="pay" asp-controller="Payments" asp-route-id="@Model.package.Id" class="btn btn-success btn-sm">Pay</a>
+                    <a asp-action="Edit" asp-controller="Package" asp-route-id="@Model.package.Id" class="btn btn-warning btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-controller="Package" asp-route-id="@Model.package.Id" class="btn btn-danger btn-sm">Delete</a>
+                }
+                @if (Model.package.Status == packagestate.Expired)
+                {
+                    <a asp-action="Delete" asp-controller="Package" asp-route-id="@Model.package.Id" class="btn btn-danger btn-sm">Delete</a>
+                }
+            </div>
+        </div>
+        <br />
+        <div><strong>@Model.package.Status</strong><span class="offset-10">@notify.ProgressBar(Model.package.Id)% used!</span></div>
+        <div class="progress progress-template">
+            @if (Model.package.Status == packagestate.Active)
+            {
+                <div role="progressbar" style="width: @notify.ProgressBar(Model.package.Id)%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-2"></div>
+            }
+            else if (Model.package.Status == packagestate.Inactive)
+            {
+                <div role="progressbar" style="width: @notify.ProgressBar(Model.package.Id)%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-3"></div>
+            }
+            else if (Model.package.Status == packagestate.Expired)
+            {
+                <div role="progressbar" style="width: @notify.ProgressBar(Model.package.Id)%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-4"></div>
+            }
+        </div>
+        <div>
+            <br />
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+</section>

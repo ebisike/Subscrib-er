@@ -1,0 +1,98 @@
+﻿@inject INotifications notify
+@inject UserManager<ApplicationUser> users
+
+@{
+    Layout = "~/Views/Shared/dashboard.cshtml";
+    ViewData["Title"] = "Home Page";
+
+    string id = users.GetUserId(User);
+}
+
+
+<section class="no-padding-top no-padding-bottom">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="statistic-block block">
+                    <div class="progress-details d-flex align-items-end justify-content-between">
+                        <div class="title">
+                            <div class="icon"><i class="icon-user-1"></i></div><strong>Active <br /> Subscriptions</strong>
+                        </div>
+                        <div class="number dashtext-1">@notify.Active(id)</div>
+                    </div>
+                    <div class="progress progress-template">
+                        <div role="progressbar" style="width: @notify.ActiveBar(id)%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-1"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="statistic-block block">
+                    <div class="progress-details d-flex align-items-end justify-content-between">
+                        <div class="title">
+                            <div class="icon"><i class="icon-contract"></i></div><strong>Inactive <br /> Subscriptions</strong>
+                        </div>
+                        <div class="number dashtext-2">@notify.Inactive(id)</div>
+                    </div>
+                    <div class="progress progress-template">
+                        <div role="progressbar" style="width: @notify.InactiveBar(id)%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-2"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="statistic-block block">
+                    <div class="progress-details d-flex align-items-end justify-content-between">
+                        <div class="title">
+                            <div class="icon"><i class="icon-paper-and-pencil"></i></div><strong>Expired <br /> Subscriptions</strong>
+                        </div>
+                        <div class="number dashtext-3">@notify.Expired(id)</div>
+                    </div>
+                    <div class="progress progress-template">
+                        <div role="progressbar" style="width: @notify.ExpiredBar(id)%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-3"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="statistic-block block">
+                    <div class="progress-details d-flex align-items-end justify-content-between">
+                        <div class="title">
+                            <div class="icon"><i class="icon-writing-whiteboard"></i></div><strong>Total <br /> Cost</strong>
+                        </div>
+                        <div class="number dashtext-4">@notify.TotalCost(id)</div>
+                    </div>
+                    <div class="progress progress-template">
+                        <div role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="pie-chart chart block">
+                    <div class="title"><strong>Pie Chart Round</strong></div>
+                    <div class="pie-chart chart margin-bottom-sm">
+                        <input hidden value="@notify.Active(id)" id="active" />
+                        <input hidden value="@notify.Inactive(id)" id="inactive" />
+                        <input hidden value="@notify.Expired(id)" id="expired" />
+                        <canvas id="pieChartCustom1"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="doughnut-chart chart block">
+                    <div class="title"><strong>Pie Chart Doughnut</strong></div>
+                    <div class="doughnut-chart chart margin-bottom-sm">
+                        <input hidden value="@notify.Active(id)" id="active" />
+                        <input hidden value="@notify.Inactive(id)" id="inactive" />
+                        <input hidden value="@notify.Expired(id)" id="expired" />
+                        <canvas id="doughnutChartCustom1"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
